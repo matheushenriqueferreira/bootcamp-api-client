@@ -3,6 +3,7 @@ package com.matheus.apiclient.services;
 import com.matheus.apiclient.dto.ClientDTO;
 import com.matheus.apiclient.entities.Client;
 import com.matheus.apiclient.repositories.ClientRepository;
+import com.matheus.apiclient.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,7 +26,7 @@ public class ClientService {
 
     @Transactional(readOnly = true)
     public ClientDTO findById(Long id) {
-        Client entity = repository.findById(id).get();
+        Client entity = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
         return new ClientDTO(entity);
     }
 
