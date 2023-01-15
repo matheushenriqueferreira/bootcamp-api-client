@@ -3,11 +3,15 @@ package com.matheus.apiclient.services;
 import com.matheus.apiclient.dto.ClientDTO;
 import com.matheus.apiclient.entities.Client;
 import com.matheus.apiclient.repositories.ClientRepository;
+import com.matheus.apiclient.services.exceptions.DatabaseException;
 import com.matheus.apiclient.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
@@ -48,6 +52,19 @@ public class ClientService {
         }
         catch (EntityNotFoundException e) {
             throw new ResourceNotFoundException("Entity not found");
+        }
+    }
+
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public void delete(Long id) {
+        try {
+            repository.deleteById(id);
+        }
+        catch (EmptyResultDataAccessException e) {
+            throw new ResourceNotFoundException("ID not found");
+        }
+        catch (DataIntegrityViolationException e) {
+            throw new DatabaseException("Integrity violation");
         }
     }
 
