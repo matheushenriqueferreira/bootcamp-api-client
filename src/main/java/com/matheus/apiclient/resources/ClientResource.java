@@ -27,4 +27,10 @@ public class ClientResource {
         Page<ClientDTO> cat = service.findAllPaged(pageRequest);
         return ResponseEntity.ok().body(cat);
     }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<ClientDTO> findById(@PathVariable Long id) {
+        ClientDTO dto = service.findById(id);
+        return ResponseEntity.ok().body(dto);
+    }
 }
