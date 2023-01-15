@@ -10,7 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import javax.persistence.EntityNotFoundException;
 
 @Service
 public class ClientService {
@@ -28,6 +28,35 @@ public class ClientService {
     public ClientDTO findById(Long id) {
         Client entity = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
         return new ClientDTO(entity);
+    }
+
+    @Transactional
+    public ClientDTO insert(ClientDTO dto) {
+        Client entity = new Client();
+        copyDtoToEntity(entity, dto);
+        entity = repository.save(entity);
+        return new ClientDTO(entity);
+    }
+
+    @Transactional
+    public ClientDTO update(Long id, ClientDTO dto) {
+        try {
+            Client entity = repository.getReferenceById(id);
+            copyDtoToEntity(entity, dto);
+            entity = repository.save(entity);
+            return new ClientDTO(entity);
+        }
+        catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException("Entity not found");
+        }
+    }
+
+    private void copyDtoToEntity(Client entity, ClientDTO dto) {
+        entity.setName(dto.getName());
+        entity.setCpf(dto.getCpf());
+        entity.setBirthDate(dto.getBirthDate());
+        entity.setChildren(dto.getChildren());
+        entity.setIncome(dto.getIncome());
     }
 
 }
