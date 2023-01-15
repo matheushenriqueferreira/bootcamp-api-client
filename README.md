@@ -1,6 +1,6 @@
 <h1 align="center">API CRUD DE CLIENTES</h1>
 
-## Descrição do Projeto
+## :memo: Descrição do Projeto
 
 <p align="center">Desafio 1 do Bootcamp Spring do DevSuperior. Projeto Spring Boot contendo um CRUD completo de web services REST para acessar um recurso de clientes.</p>
 
@@ -12,12 +12,12 @@
 - [x] Atualização de cliente;
 - [x] Deleção de cliente.
 
-## Tabela de Conteúdo
+## :clipboard: Tabela de Conteúdo
 <!--ts-->
-* [Descrição do Projeto](#descrição-do-projeto)
+* [Descrição do Projeto](#memo-descrição-do-projeto)
 * [Funcionalidades do projeto](#white_check_mark-funcionalidades-do-projeto)
-* [Tabela de Conteúdo](#tabela-de-conteúdo)
-* [Créditos](#man_technologist-créditos)
+* [Tabela de Conteúdo](#clipboard-tabela-de-conteúdo)
+* [Créditos](#copyright-créditos)
 <!--te-->
 
 ## :hash: Tecnologias utilizadas
@@ -29,7 +29,7 @@
 - [IntelliJ IDEA Community Edition](https://www.jetbrains.com/pt-br/idea/) - IDE utilizada.
 - [Postman](https://www.postman.com/) - Testes manuais das requisições.
 
-## :man_technologist: Créditos
+## :copyright: Créditos
 
 | [<img src="https://avatars.githubusercontent.com/u/66876849?s=200&v=4" width=115><br><sub>DevSuperior</sub>](https://github.com/devsuperior) |  
 | :---: |
