@@ -8,9 +8,9 @@
 
 - [x] Busca paginada de clientes;
 - [x] Busca de cliente por id;
-- [x] Inserção de novo cliente;
-- [x] Atualização de cliente;
-- [x] Deleção de cliente.
+- [x] Inserir novo cliente;
+- [x] Atualizar cliente;
+- [x] Deletar cliente.
 
 ## :clipboard: Tabela de Conteúdo
 <!--ts-->
